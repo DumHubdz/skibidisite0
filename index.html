@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chillydz FF - Menu Hack</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+    
+    body {
+      margin: 0;
+      padding: 0;
+      background: rgba(0, 0, 0, 0.95);
+      color: #00ffaa;
+      font-family: 'Press Start 2P', sans-serif;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    /* Nút tròn CL */
+    #float-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(45deg, #00ffaa, #00cc88);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: bold;
+      color: #000;
+      box-shadow: 0 0 20px #00ffaa, 0 0 40px #00ffaa;
+      z-index: 9999;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    #float-btn:hover { transform: scale(1.1); }
+
+    /* Menu chính */
+    #menu {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 420px;
+      background: rgba(10, 10, 20, 0.98);
+      border: 3px solid #00ffaa;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #00ffaa;
+      padding: 20px;
+      z-index: 10000;
+      transition: all 0.4s ease;
+      display: none;
+    }
+    #menu.active {
+      display: block;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .title {
+      text-align: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #00ffaa;
+    }
+
+    .feature {
+      margin: 15px 0;
+      padding: 12px;
+      background: rgba(0, 255, 170, 0.1);
+      border-radius: 8px;
+      border: 1px solid #00ffaa;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    input[type="checkbox"] { accent-color: #00ffaa; }
+    input[type="range"] { width: 100%; accent-color: #00ffaa; }
+
+    .btn {
+      background: #00ffaa;
+      color: #000;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nút tròn CL -->
+  <div id="float-btn" onclick="toggleMenu()">CL</div>
+
+  <!-- Menu Hack -->
+  <div id="menu">
+    <div class="title">CHILLYDZ FF</div>
+    <div class="title" style="font-size:14px; color:#ff00aa;">MENU HACK FREE FIRE</div>
+
+    <div class="feature">
+      <label><input type="checkbox" id="aimbot"> Auto Aim (Nhắm Đầu)</label>
+    </div>
+
+    <div class="feature">
+      <label><input type="checkbox" id="esp"> ESP Player (Đối Thủ)</label>
+      <label><input type="checkbox" id="espall"> ESP All (Tất Cả)</label>
+    </div>
+
+    <div class="feature">
+      <label>Speed Hack <span id="speed-val">0</span></label>
+      <input type="range" id="speed" min="0" max="500" value="0" oninput="document.getElementById('speed-val').textContent = this.value">
+    </div>
+
+    <div class="feature">
+      <label>Jump Hack <span id="jump-val">0</span></label>
+      <input type="range" id="jump" min="0" max="500" value="0" oninput="document.getElementById('jump-val').textContent = this.value">
+    </div>
+
+    <div class="feature">
+      <label><input type="checkbox" id="noclip"> NoClip (Đi Xuyên Tường)</label>
+    </div>
+
+    <button class="btn" onclick="activateHack()">ACTIVATE ALL HACK</button>
+    <button class="btn" onclick="toggleMenu()" style="background:#ff00aa; margin-top:8px;">ĐÓNG MENU</button>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('active');
+    }
+
+    function activateHack() {
+      const aim = document.getElementById('aimbot').checked ? '[ON] Auto Aim Head' : '';
+      const esp = document.getElementById('esp').checked ? '[ON] ESP Player' : '';
+      const espall = document.getElementById('espall').checked ? '[ON] ESP All' : '';
+      const speed = document.getElementById('speed').value;
+      const jump = document.getElementById('jump').value;
+      const noclip = document.getElementById('noclip').checked ? '[ON] NoClip' : '';
+
+      alert(`✅ CHILLYDZ FF ACTIVATED!\n\n` +
+            `${aim}\n${esp}\n${espall}\n` +
+            `Speed: ${speed}/500\n` +
+            `Jump: ${jump}/500\n` +
+            `${noclip}\n\n` +
+            `Menu hack đang hoạt động! (Chỉ là giao diện demo)`);
+    }
+
+    // Nhấn phím "K" để mở menu nhanh
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'k' || e.key === 'K') {
+        toggleMenu();
+      }
+    });
+
+    console.log('%cChillydz FF Menu Hack loaded successfully!', 'color:#00ffaa; font-size:20px');
+  </script>
+</body>
+  </html>
